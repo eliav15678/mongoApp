@@ -123,6 +123,7 @@ router.post('/login', async(request,response) => {
             avatar: account.avatar
         }
         const token = await jwt.sign( {dataToToken} , process.env.JWT_KEY , {expiresIn:'30d'});
+        
         //Response
         return response.status(200).json({
             message: account,
