@@ -5,6 +5,78 @@ import Account from "../models/account.js";
 import bcryptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import Category from '../models/category.js';
+import Auth from './auth.js';
+import Product from "../models/product.js";
+
+router.get('/getAllProducts' , Auth ,async(request , response) =>{
+    Product.find()
+    .populate('associatAccount')
+    .populate('associatCategory')
+    .then(allProducts => {
+        return response.status(200).json({
+            message : allProducts
+        });
+    })
+    .catch(error => {
+        return response.status(200).json({
+            message : error.message
+        });
+    })
+})
+
+router.get('/getProductsByCategory/:id' , Auth ,async(request , response) =>{
+    const cid = request.params.id;
+    Product.find({associatCategory : cid})
+    .populate('associatAccount')
+    .populate('associatCategory')
+    .then(allProducts => {
+        return response.status(200).json({
+            message : allProducts
+        });
+    })
+    .catch(error => {
+        return response.status(200).json({
+            message : error.message
+        });
+    })
+})
+
+router.post('/addProduct', Auth , async(request , response) => {
+
+    const {
+        associatCategory,
+        productName,
+        ProductPrice,
+        productDescription,
+        productImage,
+        productStatus
+    } = request.body;
+
+    const id = new mongoose.Types.ObjectId();
+
+    const _product = new Product({
+        _id : id ,
+        associatAccount : request.user._id,
+        associatCategory : associatCategory,
+        productName : productName,
+        ProductPrice : ProductPrice,
+        productDescription : productDescription,
+        productImage : productImage,
+        productStatus : productStatus
+    });
+    _product.save()
+    .then(product_added => {
+        return response.status(200).json({
+            message : product_added
+        });
+    })
+    .catch(error => {
+        return response.status(200).json({
+            message : error.message
+        });
+    })
+})
+
 
 router.get('/getCategories', async (request,response) => {
     //find ALL
