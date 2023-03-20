@@ -1,7 +1,11 @@
 import express from "express";
 import mongoose from "mongoose";
-import action from './controller/actions.js';
+//old//import action from './controller/actions.js';
 import dotenv from 'dotenv';
+import accountRoute from './controller/account.js';
+import productRoute from './controller/product.js';
+
+
 dotenv.config();
 const app = express();
 
@@ -11,7 +15,15 @@ app.use(express.json());
 const mongo_url = process.env.MONGO_URL;
 const port = process.env.PORT;
 
-app.use('/api',action)
+//old
+//app.use('/api',action)
+
+//account
+app.use('/api/account',accountRoute)
+
+//product
+app.use('/api/product', productRoute)
+
 
 
 mongoose.connect(mongo_url)
