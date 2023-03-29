@@ -11,11 +11,13 @@ router.get('/getAllProducts' , Auth ,async(request , response) =>{
     .populate('associatCategory')
     .then(allProducts => {
         return response.status(200).json({
+            status : true,
             message : allProducts
         });
     })
     .catch(error => {
         return response.status(200).json({
+            status : false,
             message : error.message
         });
     })
