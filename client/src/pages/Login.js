@@ -6,8 +6,9 @@ function Login() {
   const [formData ,setFormData] = useState({
     email: '',
     password: ''
-  }) 
+  }); 
 
+  
   const onChangeText = (e) => {
     setFormData((prev) => ({
         ...prev,
@@ -15,7 +16,14 @@ function Login() {
     }))
   }
 
+
   const {email,password} = formData;
+
+
+  const onSubmit = async() => {
+    
+  }
+      
 
   return (
     <>
@@ -25,9 +33,10 @@ function Login() {
       </section>
 
       <section>
-        <form>
+        <form onSubmit={onSubmit}>
             <div>
               <input 
+                className='form-control'
                 type="email"
                 id='email'
                 name='email'
@@ -38,6 +47,7 @@ function Login() {
             </div>
             <div>
               <input 
+                className='form-control'
                 type="password"
                 id='password'
                 name='password'
@@ -46,6 +56,11 @@ function Login() {
                 onChange={onChangeText}
               />
             </div>
+
+            <button className='login-btn' type='submit'>
+              Login
+            </button>
+
         </form>
       </section>
 

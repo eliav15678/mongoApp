@@ -4,8 +4,69 @@
 body {
   margin: 0;
   font-family: 'Poppins' , sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+}
+
+.container{
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding:  0 20px;
+  text-align: center;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #999;
+  margin-bottom: 60px;
+}
+
+.header ul{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.header ul li{
+  margin-left: 10px;
+}
+
+.header ul li a{
+  text-decoration: none;
+  display: block;
+  background-color: #0099cc;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.header ul li a:hover{
+  background-color: yellow;
+}
+
+.form-control{
+  padding:  5px ;
+  border-radius: 4px;
+  width: 300px;
+  border:  2px solid #ccc;
+  margin-top: 12px;
+
+}
+
+.login-btn{
+  padding:  10px 0 ;
+  border-radius: 4px;
+  width: 320px;
+  margin-top: 12px;
+  background-color: #0099cc;
+  color: white;
+  border: none;
+  font-size: 20px;
 }
 
 h1.head{
