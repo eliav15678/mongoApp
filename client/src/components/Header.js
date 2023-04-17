@@ -14,7 +14,6 @@ const Header = () => {
 
     return(
         <header className="header">
-        <ToastContainer />    
             <div className="l<ogo">
                 <Link to='/'>mongoApp</Link>
             </div>
